@@ -1,54 +1,25 @@
 const express = require('express')
-const PORT = 3000
-const app= express()
+const database = require('./database/db')
+const app = express()
+const categoryRouts = require('./routs/categoryRouts')
+
+console.log(categoryRouts.stack)
+
+app.use('/', categoryRouts)
 
 app.use(express.json())
 
-const token = "TOP_SECRET"
-
-let products = [{name:'iPhone12 Case', price: '999'},{name:'iPhone13 Case', price: '1199'},{name:'iPhone14 Case', price: '1499'}]
-
-const validator = (req,res,next)=>{
-    const{name, price} = req.body
-
-    if(!name || !price) res.json({error:"Validation failed"})
-    else next()
-}
-
-const isAuthorised = (req,res,next)=>{
-    if (req.header.authorisation === token) next()
-    else res.json({error: 'UNAUTHORISED'})
-}
-
-//--PUBLIC ROUTS--
-app.get('/', (req,res)=>{
-    res.json({products})
-})
-//--PRIVATE ROUTES--
-
-app.post('/products/add',isAuthorised,(req,res)=>{
-    const{name,price}=req.body
-    const newProduct ={
-        name,
-        price,
+app.get('/',(req,res) => {
+    try {
+        console.log(document)
+    } catch (error) {
+        res.status(203).send(error.message)
     }
-    products.push(newProduct)
-    res.send('product added')
 })
 
-
-//--Authentication--
-
-app.post('/auth',(req,res)=>{
-    const {email,password}=req.body
-    if(email==='admin@gmail.com' && password ==='password'){
-        res.send({token})
-    } else{
-        res.send({message:"UNAUTHORISED"})
-    }
-    res.send('product added')
+app.listen(3001,()=>{
+    console.log("Server listening at port 3001")
 })
 
-app.listen(PORT,()=>{
-    console.log(`Server listening at port ${PORT}`)
-})
+//database.products.push('iphone')
+//console.log(database)
