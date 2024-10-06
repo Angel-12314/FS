@@ -1,15 +1,14 @@
-import Navbar from './layouts/Navbar'
-import Footer from './layouts/Footer'
-import Content from './components/content'
+//import {useState} from 'react';
+import Description from './components/Description';
+import One from './components/One';
 
 const App=() =>  {
 
   return (
     <div className="App">
-      <Navbar />
-      <Content />
-      <Footer />
-    </div>
+      <One />
+      
+    </div> 
   );
 }
 
