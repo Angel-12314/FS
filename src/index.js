@@ -9,7 +9,21 @@ import {Provider} from 'react-redux'
 //import {createStoreHook, provider} from 'react-redux'
 import {composeWithDevTools} from '@redux-devtools/extension'
 
-const store = createStore(reducer, {Products:['1phone11', '1phone12','1phone13'],categories:['mobiles','headphone', 'case']}, composeWithDevTools())
+const chores = [
+  {
+    id: 1,
+    text: 'Take the medicine'
+  },
+  {
+    id: 5,
+    text: 'Eat'
+  },
+  {
+    id: 3,
+    text: 'sleep'
+  },
+]
+const store = createStore(reducer, chores, composeWithDevTools())
 
 ReactDOM.render(
   

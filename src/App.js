@@ -1,13 +1,10 @@
-//import {useState} from 'react';
-import Description from './components/Description';
-import One from './components/One';
-
+import {useState} from 'react';
+import List from './components/List'
 const App=() =>  {
 
   return (
-    <div className="App">
-      <One />
-      
+    <div>
+      <List />
     </div> 
   );
 }
