@@ -1,10 +1,18 @@
 import {useState} from 'react';
-import List from './components/List'
+import Products from './components/Products';
+import Details from './components/Details';
+import {Routes,Route} from 'react-router-dom'
+import Navbar from './layout/Navbar';
+
 const App=() =>  {
 
   return (
     <div>
-      <List />
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Products />} />
+        <Route path='/product/:name' element={<Details />} />
+      </Routes>
     </div> 
   );
 }
